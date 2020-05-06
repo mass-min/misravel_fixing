@@ -64,7 +64,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $ngWord = env('APP_NAME');
-        $data['name'] = stristr($data['name'], $ngWord) or null ? '' : $data['name'];
+        $data['name'] = (stristr($data['name'], $ngWord) or $data['name'] === null) ? '' : $data['name'];
 
         $user = User::create([
             'name' => $data['name'],
